@@ -1,6 +1,7 @@
 // import React from 'react';
 import { useEffect, useState } from 'react'
 import './home.css'
+import { Link } from 'react-router-dom'
 
 export default function Home() {
   const [isSignedIn, setIsSignedIn] = useState(false)
@@ -57,22 +58,26 @@ export default function Home() {
               </div>
               <>
                 {isSignedIn ? (
-                  <div className='profile-sign'>
+                  <div className="profile-sign">
                     <img
                       src="./story.jpg"
                       alt="Profile"
                       className="profile-img"
                     />
                     {/* tombol signout */}
-                    <button className='button-signout'  onClick={handleLogout}>
-                      <a href="/">Sign Out</a>
+                    <button className="button-signout" onClick={handleLogout}>
+                      <Link to="/">Sign Out</Link>
                     </button>
                   </div>
                 ) : (
                   <div className="signup1" href="login">
-                    <a className="signup2" href="/signup">
+                    <Link className="signup2" to="/signup">
                       Sign Up
-                    </a>
+                    </Link>
+                    {/* <a className="signup2" href="/signup">
+                    
+                      Sign Up
+                    </a> */}
                   </div>
                 )}
               </>

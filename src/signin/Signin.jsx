@@ -1,24 +1,30 @@
+import { useNavigate } from 'react-router-dom'
 import './signin.css'
 
 export default function Signin() {
-  const handleLogin = () => {
+  const navigate = useNavigate()
+  
+  const handleLogin = (e) => {
+    e.preventDefault()
     // Misalnya user berhasil login
     localStorage.setItem('isSignedIn', 'true')
-    window.location.href = '/' // Redirect ke halaman beranda atau halaman lain
+    // Redirect ke halaman beranda atau halaman lain
+    navigate('/')
   }
+
   return (
     <div className="container">
       <div className="img">
-        <img className="img1" src="./signup.png" />
+        <img className="img1" src="./signup.png" alt="Sign Up" />
         <div className="screen">
           <div className="img3">
-            <img className="img2" src="./tickitz1.png" alt="" />
+            <img className="img2" src="./tickitz1.png" alt="Tickitz" />
           </div>
           <p className="textleft">wait, watch, wow!</p>
         </div>
       </div>
       <div className="right">
-        <form action="">
+        <form onSubmit={handleLogin}>
           <div>
             <h2 className="judul">Sign In</h2>
             <p className="text1">
@@ -32,6 +38,7 @@ export default function Signin() {
                 className="input-box"
                 type="text"
                 placeholder="Write your email"
+                required
               />
             </div>
             <div className="input2">
@@ -40,17 +47,16 @@ export default function Signin() {
                 className="input-box"
                 type="password"
                 placeholder="Write your password"
+                required
               />
             </div>
           </div>
-          {/* <div> */}
-          <button className="button" onClick={handleLogin}>
-            <a href="/">Sign In</a>
+          <button className="button" type="submit">
+            Sign In
           </button>
-          {/* </div> */}
           <div className="panel signup">
             <p>Forgot your password? </p>
-            <a>Reset now</a>
+            <a href="/reset">Reset now</a>
           </div>
           <div className="signin">
             <p>Don’t have an account?</p>
